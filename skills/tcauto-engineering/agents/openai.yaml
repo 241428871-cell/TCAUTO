@@ -1,0 +1,4 @@
+interface:
+  display_name: "TCAUTO · 工程习惯"
+  short_description: "新项目和工程工作默认入口，读取并采用原样保存的跨项目工程习惯"
+  default_prompt: "使用 $tcauto-engineering 按跨项目工程习惯开始或恢复当前工程工作。"
