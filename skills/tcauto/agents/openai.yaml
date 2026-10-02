@@ -1,4 +1,4 @@
 interface:
   display_name: "TCAUTO · 持续工作"
   short_description: "持续推进长任务，管理断点、定时续接与同模型且独立选择深度的多 Agent 审查"
-  default_prompt: "使用 $tcauto 按跨项目工程习惯持续完成当前已授权任务，安排定时续接与独立审查，显式指定子 Agent 模型，深度按任务独立选择。"
+  default_prompt: "使用 $tcauto 持续完成已授权任务，自动研究先设置 goal 并随用户更新同步，安排定时续接与审查，显式指定子 Agent 模型，独立选择深度。"
