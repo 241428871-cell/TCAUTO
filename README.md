@@ -1,15 +1,17 @@
 # TCAUTO
 
-**A compact Agent Skills collection for cross-project engineering, long-running work, scheduled continuation, and multi-agent review.**
+**A compact Agent Skills collection for cross-project engineering, long-running work, scheduled continuation, and optional multi-agent collaboration.**
 
-TCAUTO 将跨项目工程习惯与精简的持续工作机制放在一起。模型随主会话更新；子 Agent 的思考深度按任务独立选择。领域工作沿用已有技能，例如 Nature 技能。
+TCAUTO 将跨项目工程习惯与精简的持续工作机制放在一起。默认单 Agent 尽快完成任务；只有用户明确要求或任务过于复杂时，才使用最少必要的多 Agent。模型随主会话更新；子 Agent 的思考深度按任务独立选择。领域工作沿用已有技能，例如 Nature 技能。
 
 ## 技能
 
 | 入口 | 用途 |
 |---|---|
 | [`tcauto-engineering`](skills/tcauto-engineering/SKILL.md) | 新项目与工程工作的默认入口，读取完整跨项目工程习惯 |
-| [`tcauto`](skills/tcauto/SKILL.md) | 长任务持续推进、断点交接、定时续接及多 Agent 审查 |
+| [`tcauto`](skills/tcauto/SKILL.md) | 单 Agent 优先持续推进、断点与定时续接、完成后验证及按需协同 |
+
+以尽快交付为先：完成全部实现并跑通主要流程后，再设计和执行必要测试、回归及边界验证。实现中仅做跑通所必需的构建、启动、基本检查与排障，不提前堆叠防御性测试或多轮审查。此流程覆盖保留原文中的旧默认委派与前置扩展验证规则，明确验收要求仍在交付前完成。
 
 创建子 Agent 时必须显式填写 `model` 为已核实的主会话当前模型完整标识，不留空或依赖默认继承；用户最新明确模型选择优先，主会话换模后重新核对，技能不固定型号。无法核实模型时先确认，不静默回退。思考深度独立选 `low / medium / high / xhigh`，不使用 `max / ultra`。调度负责唤醒与续接，产物更新后再做必要审查；达到完成、截止或暂停条件后收尾。
 
@@ -30,7 +32,7 @@ TCAUTO 将跨项目工程习惯与精简的持续工作机制放在一起。模�
 要让每次新项目与工程工作默认遵循 TCAUTO，安装后还须在 Codex 的用户级 `~/.codex/AGENTS.md` 中加入以下入口；仅复制技能目录不等于设置默认工作约定：
 
 ```markdown
-每次新建项目、开始或恢复工程工作，先使用 TCAUTO 的 tcauto-engineering，读取其中的跨项目工程习惯原文并按适用约定执行。长任务使用 tcauto 管理持续推进、定时续接与独立审查。自动研究开始前必须设置有效 goal；用户要求更新任务时同步已有 goal，续接对照最新目标，按当前目标工具条件执行。创建子 Agent 时必须显式填写 model 为已核实的主会话当前模型完整标识，不省略或依赖默认继承，用户最新明确模型选择优先。思考深度独立按任务从 low、medium、high、xhigh 选择，不使用 max、ultra。
+每次新建项目、开始或恢复工程工作，先使用 TCAUTO 的 tcauto-engineering，读取其中的跨项目工程习惯原文并按适用约定执行。长任务使用 tcauto。默认单 Agent 尽快完成任务，只有用户明确要求或任务过于复杂才使用最少必要的多 Agent；先全部完成并跑通，再设计必要测试，实现中仅做跑通所必需的基本检查与排障，覆盖原文旧流程。自动研究开始前必须设置有效 goal；用户要求更新任务时同步已有 goal，续接对照最新目标，按当前目标工具条件执行。创建子 Agent 时必须显式填写 model 为已核实的主会话当前模型完整标识，不省略或依赖默认继承，用户最新明确模型选择优先。思考深度独立按任务从 low、medium、high、xhigh 选择，不使用 max、ultra。
 ```
 
 调用示例：`$tcauto-engineering 开始当前工程工作`；`$tcauto 持续完成当前已授权任务`。

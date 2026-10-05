@@ -1,3 +1,3 @@
 # TCAUTO 工程入口
 
-本项目共同约定见 `AGENTS.md`。开始工程工作先读 `skills/tcauto-engineering/SKILL.md` 及跨项目工程习惯原文；持续工作按 `skills/tcauto/SKILL.md` 执行，并使用当前工具实际支持的调度及多 Agent 能力。
+本项目共同约定见 `AGENTS.md`。开始工程工作先读 `skills/tcauto-engineering/SKILL.md` 及跨项目工程习惯原文；持续工作按 `skills/tcauto/SKILL.md` 执行。默认单 Agent 尽快完成，只有用户明确要求或任务过于复杂才协同；先完成并跑通，再设计必要测试，实现中只做跑通所必需的基本检查与排障。
