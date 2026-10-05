@@ -2,3 +2,6 @@ interface:
   display_name: "TCAUTO · 持续工作"
   short_description: "默认单 Agent 尽快完成任务，管理目标与续接，完成后验证，复杂任务按需协同"
   default_prompt: "使用 $tcauto 默认单 Agent 尽快完成已授权任务，自动研究设置并同步 goal，全部完成并跑通后再验证，仅用户明确要求或任务过于复杂时协同。"
+
+policy:
+  allow_implicit_invocation: false
